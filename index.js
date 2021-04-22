@@ -1,12 +1,13 @@
 const puppeteer = require('puppeteer');
 
 (async () => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    await page.setViewport({
-        width: 1280,
-        height: 720,
+    const browser = await puppeteer.launch({
+        defaultViewport: {
+            width: 1280,
+            height: 720,
+        },
     });
+    const page = await browser.newPage();
     await page.goto('https://mail.ru', {
         waitUntil: 'networkidle2'
     });
